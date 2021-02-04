@@ -14,15 +14,13 @@
         </li>
       </ul>
     </nav>
-    <div class="flex-container">
-      <div class="row">
-        <main class="flex-column flex-column-9">
-          <Nuxt/>
-        </main>
-        <aside class="flex-column flex-column-3">
-          <SideBar/>
-        </aside>
-      </div>
+    <div class="grid">
+      <main class="col-9">
+        <Nuxt/>
+      </main>
+      <aside>
+        <div class="box">The sidebar</div>
+      </aside>
     </div>
   </div>
 </template>
@@ -59,7 +57,7 @@ body {
 #page {
   margin: 0 auto;
   width: auto;
-  max-width: 1024px;
+  max-width: 1440px;
 }
 
 h1 {
@@ -180,11 +178,22 @@ h2 {
 }
 
 input, .form-control {
+  display: block;
   width: 100%;
   border: solid 1px lightgrey;
   padding: 1rem;
 }
 
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.form-group {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
 
 button, input[type="button"], input[type="submit"], .btn {
   padding: 1rem;
@@ -216,5 +225,59 @@ a.btn {
   width: 100%;
   height: 0;
   clear: both;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-gap: 1rem;
+}
+
+.col-1 {
+  grid-column: col-start / span 1;
+}
+
+.col-2 {
+  grid-column: col-start / span 2;
+}
+
+.col-3 {
+  grid-column: col-start / span 3;
+}
+
+.col-4 {
+  grid-column: col-start / span 4;
+}
+
+.col-5 {
+  grid-column: col-start / span 5;
+}
+
+.col-6 {
+  grid-column: col-start / span 6;
+}
+
+.col-7 {
+  grid-column: col-start / span 7;
+}
+
+.col-8 {
+  grid-column: col-start / span 8;
+}
+
+.col-9 {
+  grid-column: col-start / span 9;
+}
+
+.col-10 {
+  grid-column: col-start / span 10;
+}
+
+.col-11 {
+  grid-column: col-start / span 11;
+}
+
+.col-12 {
+  grid-column: col-start / span 12;
 }
 </style>

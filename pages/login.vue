@@ -50,41 +50,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 15rem auto 0;
-  width: auto;
-  max-width: 1024px;
-}
 
-.form-group {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-input, .form-control {
-  border: solid 1px darkgrey;
-  border-radius: 5px;
-  padding: 8px;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 1rem;
-}
-
-button, .btn {
-  padding: 8px;
-  border: solid 1px darkgrey;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background-color: dodgerblue;
-  color: white;
-}
 </style>
