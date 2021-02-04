@@ -8,7 +8,7 @@
       <ul id="navbar">
         <li class="nav-link">
           <NuxtLink to="/">Home</NuxtLink>
-          </li>
+        </li>
         <li class="nav-link">
           <NuxtLink to="/about">About</NuxtLink>
         </li>
@@ -20,7 +20,7 @@
           <Nuxt/>
         </main>
         <aside class="flex-column flex-column-3">
-            <SideBar />
+          <SideBar/>
         </aside>
       </div>
     </div>
@@ -105,6 +105,7 @@ h2 {
 #navbar .nav-link {
   /**/
 }
+
 .nav-link a {
   display: flex;
   justify-content: center;
@@ -114,6 +115,7 @@ h2 {
   padding: 0 3rem;
   text-align: center;
 }
+
 .nav-link a:hover, .nuxt-link-exact-active {
   background-color: black;
   color: white;
@@ -134,9 +136,11 @@ h2 {
   flex: 1;
   margin-right: 5rem;
 }
+
 *.flex-column:last-child {
   margin-right: 0;
 }
+
 .flex-column-3 {
   flex-grow: 3;
   width: 25%;
@@ -147,10 +151,16 @@ h2 {
   width: 75%;
 }
 
+.flex-column-10 {
+  flex-grow: 10;
+  width: 83.33%;
+}
+
 .box {
   padding: 3rem;
   background-color: lightgrey;
 }
+
 .box-outline {
   background: none;
   border: solid 1px lightgrey;
@@ -160,10 +170,51 @@ h2 {
 .mb-1 {
   margin-bottom: 1rem;
 }
+
 .mb-2 {
   margin-bottom: 2rem;
 }
+
 .mb-3 {
   margin-bottom: 3rem;
+}
+
+input, .form-control {
+  width: 100%;
+  border: solid 1px lightgrey;
+  padding: 1rem;
+}
+
+
+button, input[type="button"], input[type="submit"], .btn {
+  padding: 1rem;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  display: block;
+}
+
+a.btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: dodgerblue;
+  border-color: blue;
+  color: white;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-right::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  clear: both;
 }
 </style>
