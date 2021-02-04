@@ -1,22 +1,43 @@
 <template>
-  <div>
-    <Nuxt />
+  <div id="page">
+    <header id="banner">
+      <h1>My blog</h1>
+      <h2>A simple blog example using Nuxt.js and Laravel 8</h2>
+    </header>
+    <nav>
+      <ul id="navbar">
+        <li class="nav-link">
+          <NuxtLink to="/">Home</NuxtLink>
+          </li>
+        <li class="nav-link">
+          <NuxtLink to="/about">About</NuxtLink>
+        </li>
+      </ul>
+    </nav>
+    <div class="flex-container">
+      <div class="row">
+        <main class="flex-column flex-column-9">
+          <Nuxt/>
+        </main>
+        <aside class="flex-column flex-column-3">
+            <SideBar />
+        </aside>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
+  font-family: 'Source Sans Pro',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  'Helvetica Neue',
+  Arial,
+  sans-serif;
+  font-size: 10px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -31,32 +52,102 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+body {
+  font-size: 1.6rem;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+#page {
+  margin: 0 auto;
+  width: auto;
+  max-width: 1024px;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+h1 {
+  font-size: 3rem;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+h2 {
+  font-size: 2.8rem;
+  font-weight: normal;
+}
+
+#banner {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+
+#banner h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+#banner h2 {
+  font-size: 3rem;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+#navbar {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: 5rem;
+  background-color: azure;
+  padding: 0;
+}
+
+#navbar .nav-link {
+  /**/
+}
+.nav-link a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 3rem;
+  text-align: center;
+}
+.nav-link a:hover, .nuxt-link-exact-active {
+  background-color: black;
+  color: white;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-container .row {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex: 1;
+  margin-right: 5rem;
+}
+*.flex-column:last-child {
+  margin-right: 0;
+}
+.flex-column-3 {
+  flex-grow: 3;
+  width: 25%;
+}
+
+.flex-column-9 {
+  flex-grow: 9;
+  width: 75%;
+}
+
+.box {
+  padding: 3rem;
+  background-color: lightgrey;
 }
 </style>

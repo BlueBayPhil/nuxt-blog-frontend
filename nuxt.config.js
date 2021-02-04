@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxtblog',
+    title: 'My Blog',
     htmlAttrs: {
       lang: 'en'
     },
@@ -36,6 +36,11 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
   ],
+
+  loading: {
+    color: 'dodgerblue',
+    height: '2px',
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
