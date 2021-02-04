@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <form @submit.prevent="handleLogin()">
+      <h4>Please enter your Email address and Password to sign in</h4>
       <div class="form-group">
         <label for="emailInput">Email Address:</label>
         <input type="email" id="emailInput" v-model="form.email">
