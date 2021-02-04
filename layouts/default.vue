@@ -99,6 +99,7 @@ h2 {
   height: 5rem;
   background-color: azure;
   padding: 0;
+  margin-bottom: 3rem;
 }
 
 #navbar .nav-link {
@@ -149,5 +150,20 @@ h2 {
 .box {
   padding: 3rem;
   background-color: lightgrey;
+}
+.box-outline {
+  background: none;
+  border: solid 1px lightgrey;
+  border-radius: 2px;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mb-2 {
+  margin-bottom: 2rem;
+}
+.mb-3 {
+  margin-bottom: 3rem;
 }
 </style>
