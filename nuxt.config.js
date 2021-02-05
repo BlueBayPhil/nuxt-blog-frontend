@@ -35,11 +35,21 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    '@nuxtjs/fontawesome',
   ],
 
   loading: {
     color: 'dodgerblue',
     height: '2px',
+  },
+
+  // FontAwesome module configuration
+  fontawesome: {
+    icons: {
+      regular: [
+        'faEdit'
+      ]
+    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -78,6 +88,5 @@ export default {
       },
       localStorage: true
     },
-
   },
 }

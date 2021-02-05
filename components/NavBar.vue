@@ -7,12 +7,19 @@
       <li class="nav-link">
         <NuxtLink to="/about">About</NuxtLink>
       </li>
+      <li class="nav-link push-right">
+        <NuxtLink to="/create">
+          <font-awesome-icon :icon="['far', 'edit']" />
+          Create Post
+        </NuxtLink>
+      </li>
     </ul>
   </nav>
 </template>
 <script>
+
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
 }
 </script>
 <style>
@@ -39,5 +46,9 @@ export default {
   height: 100%;
   padding: 0 3rem;
   text-align: center;
+}
+
+.push-right {
+  margin-left: auto;
 }
 </style>
