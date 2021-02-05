@@ -23,7 +23,7 @@
       <li class="nav-link push-right" v-if="!$auth.loggedIn">
         <NuxtLink to="/login">Sign In</NuxtLink>
       </li>
-      <li class="nav-link push-right" v-if="$auth.loggedIn">
+      <li class="nav-link push-right" v-else>
         <NuxtLink to="/logout">Logout</NuxtLink>
       </li>
     </ul>

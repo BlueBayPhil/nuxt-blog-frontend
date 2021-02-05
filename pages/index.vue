@@ -7,6 +7,14 @@
         <p>{{ article.description }}</p>
       </NuxtLink>
     </article>
+
+    <div class="scroll-to-load-more" v-if="!isLastPage">
+      <p v-if="loading">Loading...</p>
+      <p v-else>Scroll to load more...</p>
+    </div>
+    <div class="scroll-to-load-more" v-if="isLastPage">
+      <p>--- Last Page ---</p>
+    </div>
   </div>
 </template>
 
@@ -16,20 +24,30 @@ export default {
   data() {
     return {
       loading: false,
-      firstPageUrl: '',
-      lastPageUrl: '',
-      nextPageUrl: '',
-      currentPage: 0,
-      lastPage: 0,
+      currentPage: 1,
+      lastPage: 1,
+      posts: [],
+    };
+  },
+  computed: {
+    isLastPage() {
+      return this.currentPage === this.lastPage;
+    },
+    nextPage() {
+      return this.currentPage + 1;
+    }
+  },
+  async asyncData({params, $axios}) {
+    const data = await $axios.$get(`/api/posts?page=1&count=3`);
+
+    return {
+      posts: data.data,
+      currentPage: data.meta.current_page,
+      lastPage: data.meta.last_page
     }
   },
   mounted() {
-    this.init();
-  },
-  async asyncData({params, $axios}) {
-    const data = await $axios.$get('/api/posts');
-
-    return {posts: data.data};
+    this.scroll();
   },
   methods: {
     init() {
@@ -38,18 +56,30 @@ export default {
       this.loading = false;
     },
     fetchPosts() {
-      this.$axios.get('/api/posts').then((result) => {
+      if (this.isLastPage) {
+        // We are on the last page.
+        console.log("Last page reached");
+        return;
+      }
+      console.log(`Loading page ${this.nextPage} / ${this.lastPage}`);
+      this.$axios.get(`/api/posts?page=${this.nextPage}&count=3`).then((result) => {
         const data = result.data;
-        this.firstPageUrl = data.first_page_url;
-        this.lastpageUrl = data.last_page_url;
-        this.nextPageUrl = data.next_page_url;
-        this.currentPage = data.current_age;
-        this.lastPage = data.last_page;
-        this.posts = data.data;
+        console.log(data);
+        this.currentPage = data.meta.current_page;
+        this.lastPage = data.meta.last_page;
+        this.posts = [...this.posts, ...data.data];
       }).catch(function (error) {
         console.error("Failed to load blog posts!");
         console.error(error);
       });
+    },
+    scroll() {
+      window.onscroll = () => {
+        const bottom = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        if (bottom) {
+          this.fetchPosts();
+        }
+      };
     }
   }
 }
@@ -79,5 +109,11 @@ export default {
   content: "";
   display: block;
   clear: both;
+}
+
+.scroll-to-load-more {
+  padding: 3rem;
+  text-align: center;
+  font-size: 2.5rem;
 }
 </style>
