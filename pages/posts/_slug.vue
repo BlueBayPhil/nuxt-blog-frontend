@@ -19,7 +19,7 @@
         <textarea class="form-control" v-model="comment" wrap="soft" rows="1"
                   placeholder="Share your thoughts..." v-on:click="expandCommentTextArea($event)"
                   v-on:blur="collapseCommentTextArea($event)" :disabled="postingComment"></textarea>
-        <button type="submit" class="btn btn-primary" :disabled="postingComment">Submit</button>
+        <button type="submit" class="btn btn-primary" :disabled="!canSubmitComment">Submit</button>
       </form>
     </div>
 
@@ -42,6 +42,11 @@ export default {
       commentPage: 1,
       commentPageCount: 1
     };
+  },
+  computed: {
+    canSubmitComment() {
+      return this.comment.length >= 10 && !this.postingComment;
+    }
   },
   async asyncData({params, $axios}) {
     const post = await $axios.$get(`/api/posts/${params.slug}`);
@@ -67,10 +72,18 @@ export default {
       });
     },
     submitComment() {
-      if (!this.$auth.loggedIn) {
+      if (!this.$auth.loggedIn || this.postingComment) {
         // How did we get here?!
         return;
       }
+
+      // Validate.
+      if (this.comment.length < 10) {
+        // Must be longer than 10 characters
+        this.postingComment = false;
+        return;
+      }
+
       this.postingComment = true;
 
       this.$axios.post(`/api/posts/${this.post.id}/comments`, {
@@ -84,6 +97,7 @@ export default {
         });
         // Clear comment textarea.
         this.comment = '';
+      }).finally(() => {
         this.postingComment = false;
       });
     },
