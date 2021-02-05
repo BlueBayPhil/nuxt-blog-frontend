@@ -4,16 +4,7 @@
       <h1>My blog</h1>
       <h2>A simple blog example using Nuxt.js and Laravel 8</h2>
     </header>
-    <nav>
-      <ul id="navbar">
-        <li class="nav-link">
-          <NuxtLink to="/">Home</NuxtLink>
-        </li>
-        <li class="nav-link">
-          <NuxtLink to="/about">About</NuxtLink>
-        </li>
-      </ul>
-    </nav>
+    <NavBar/>
     <div class="grid">
       <main class="col-9">
         <Nuxt/>
@@ -87,21 +78,6 @@ h2 {
   font-weight: normal;
   padding: 0;
   margin: 0;
-}
-
-#navbar {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  height: 5rem;
-  background-color: azure;
-  padding: 0;
-  margin-bottom: 3rem;
-}
-
-#navbar .nav-link {
-  /**/
 }
 
 .nav-link a {
@@ -281,3 +257,10 @@ a.btn {
   grid-column: col-start / span 12;
 }
 </style>
+<script>
+import NavBar from "@/components/NavBar";
+
+export default {
+  components: {NavBar}
+}
+</script>
