@@ -9,29 +9,23 @@
     <h3>Comments</h3>
 
     <div class="comment-scribe-window">
-      <form method="post" @action.prevent="submitComment()" class="flex-container" v-if="$auth.loggedIn">
-        <div class="form-group flex-column flex-column-10">
-          <label>
-          <textarea class="form-control" rows="1" v-on:click="expandCommentTextArea($event)"
-                    v-on:blur="collapseCommentTextArea($event)"
-                    placeholder="Post a comment..."></textarea>
-          </label>
-        </div>
-        <div class="form-group flex-column">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
+
       <div v-if="!$auth.loggedIn">
-        You must be signed in to post a comment. <NuxtLink to="/login" class="btn btn-primary">Sign In</NuxtLink>
+        You must be signed in to post a comment.
+        <NuxtLink to="/login" class="btn btn-primary">Sign In</NuxtLink>
       </div>
+
+      <form v-if="$auth.loggedIn" @submit.prevent="submitComment" class="comment-scribe">
+        <textarea class="form-control" v-model="comment" wrap="soft" rows="1"
+                  placeholder="Share your thoughts..." v-on:click="expandCommentTextArea($event)"
+                  v-on:blur="collapseCommentTextArea($event)" :disabled="postingComment"></textarea>
+        <button type="submit" class="btn btn-primary" :disabled="postingComment">Submit</button>
+      </form>
     </div>
 
     <div class="comments-container">
       <div class="loading" v-if="loading">Loading Comments...</div>
-      <div class="comment" v-for="comment in comments" :key="comment.id">
-        <h4>{{ comment.author }} - <span>{{ (new Date(comment.created_at)).toLocaleString() }}</span></h4>
-        <p>{{ comment.message }}</p>
-      </div>
+      <Comment v-for="comment in comments" :key="comment.id" :comment="comment"/>
     </div>
   </div>
 </template>
@@ -42,7 +36,11 @@ export default {
     return {
       post: null,
       comments: [],
-      loading: false
+      loading: false,
+      comment: '',
+      postingComment: false,
+      commentPage: 1,
+      commentPageCount: 1
     };
   },
   async asyncData({params, $axios}) {
@@ -58,14 +56,36 @@ export default {
   methods: {
     loadComments() {
       this.loading = true;
-      this.$axios.get(`/api/posts/${this.post.id}/comments`).then((result) => {
+
+      this.$axios.get(`/api/posts/${this.post.id}/comments?page=${this.commentPage}&sort=desc&count=5`).then((result) => {
         this.comments = result.data.data;
+
+        this.commentPageCount = result.data.meta.last_page;
+        this.commentPage = result.data.meta.current_page;
       }).finally(() => {
         this.loading = false;
       });
     },
     submitComment() {
-      // TODO
+      if (!this.$auth.loggedIn) {
+        // How did we get here?!
+        return;
+      }
+      this.postingComment = true;
+
+      this.$axios.post(`/api/posts/${this.post.id}/comments`, {
+        comment: this.comment
+      }).then(() => {
+        // Add our comment to the top of the comment list.
+        this.comments.unshift({
+          author: this.$auth.user.name,
+          message: this.comment,
+          created_at: new Date().toISOString()
+        });
+        // Clear comment textarea.
+        this.comment = '';
+        this.postingComment = false;
+      });
     },
     expandCommentTextArea(event) {
       event.currentTarget.setAttribute('rows', 3);
@@ -86,39 +106,27 @@ export default {
   padding: 2rem;
 }
 
+.comment-scribe {
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-scribe > textarea {
+  flex-grow: 1;
+  width: 90%;
+  margin-right: 1rem;
+}
+
 .comments-container {
   border: solid 1px darkgrey;
   padding: 1rem;
   border-radius: 3px;
 }
 
-.comment {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: solid 1px darkgrey;
-}
-
 .comments-container .comment:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
-}
-
-.comment h4 {
-  margin-bottom: 1.3rem;
-}
-
-.comment h4 > span {
-  color: darkgrey;
-  float: right;
-}
-
-.comment h4 > span:after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 0;
-  clear: both;
 }
 
 .loading {
