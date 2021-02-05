@@ -72,11 +72,10 @@ export default {
       });
     },
     submitComment() {
-      if (!this.$auth.loggedIn) {
+      if (!this.$auth.loggedIn || this.postingComment) {
         // How did we get here?!
         return;
       }
-      this.postingComment = true;
 
       // Validate.
       if (this.comment.length < 10) {
@@ -84,6 +83,8 @@ export default {
         this.postingComment = false;
         return;
       }
+
+      this.postingComment = true;
 
       this.$axios.post(`/api/posts/${this.post.id}/comments`, {
         comment: this.comment
