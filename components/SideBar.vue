@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-container">
-
+    <CreatePostSidebar v-if="this.$route.name == 'create'"></CreatePostSidebar>
   </div>
 </template>
 

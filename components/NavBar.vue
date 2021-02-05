@@ -7,11 +7,18 @@
       <li class="nav-link">
         <NuxtLink to="/about">About</NuxtLink>
       </li>
-      <li class="nav-link push-right">
+      <li class="nav-link push-right" v-if="this.$route.name !== 'create'">
         <NuxtLink to="/create">
-          <font-awesome-icon :icon="['far', 'edit']" />
+          <font-awesome-icon :icon="['far', 'edit']"/>
           Create Post
         </NuxtLink>
+      </li>
+      <li class="nav-link push-right" v-if="this.$route.name === 'create'">
+        <button type="button" id="btnSubmitPost" class="btn btn-primary"
+                v-on:click="() => {$store.commit('post/posting')}"
+                :disabled="$store.state.post.posting">
+          Save
+        </button>
       </li>
     </ul>
   </nav>

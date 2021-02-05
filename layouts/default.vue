@@ -9,9 +9,7 @@
       <main class="col-9">
         <Nuxt/>
       </main>
-      <aside>
-        <div class="box">The sidebar</div>
-      </aside>
+      <SideBar/>
     </div>
   </div>
 </template>
