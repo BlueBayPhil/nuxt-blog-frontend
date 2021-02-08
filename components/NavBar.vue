@@ -9,7 +9,7 @@
       </li>
       <li class="nav-link push-right" v-if="$auth.loggedIn && $route.name !== 'create'">
         <NuxtLink to="/create">
-          <font-awesome-icon :icon="['far', 'edit']"/>
+          <fa :icon="['far', 'edit']"/>
           Create Post
         </NuxtLink>
       </li>

@@ -48,8 +48,10 @@ export default {
   // FontAwesome module configuration
   fontawesome: {
     icons: {
-      regular: [
-        'faEdit'
+      component: 'fa',
+      solid: [
+        'faEdit',
+        'faWindowClose'
       ]
     }
   },
