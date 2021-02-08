@@ -40,7 +40,7 @@ export default {
   computed: {
     canEdit() {
       // TODO
-      return true;
+      return this.$auth.LoggedIn && this.$auth.user.id === this.comment.author_id;
     }
   },
   mounted() {
