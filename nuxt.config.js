@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -38,6 +38,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/fontawesome',
+    '@nuxtjs/pwa',
   ],
 
   loading: {
@@ -96,5 +97,10 @@ export default {
       },
       localStorage: true
     },
+  },
+
+  // PWA configuration
+  pwa: {
+    icon: false // Disable the icon module as this is a website.
   },
 }
