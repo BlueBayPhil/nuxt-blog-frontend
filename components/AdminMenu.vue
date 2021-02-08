@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-menu" id="adminMenu">
+  <div class="admin-menu" id="adminMenu" v-if="$auth.loggedIn">
     <button type="button" class="btn btn-primary"
             v-bind:class="{hidden: !menuHidden}" v-on:click="showMenu">Show Menu
     </button>
