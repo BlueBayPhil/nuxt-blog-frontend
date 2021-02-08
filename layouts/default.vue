@@ -11,6 +11,8 @@
       </main>
       <SideBar/>
     </div>
+
+    <AdminMenu/>
   </div>
 </template>
 
