@@ -11,6 +11,8 @@
       </main>
       <SideBar/>
     </div>
+
+    <AdminMenu/>
   </div>
 </template>
 
@@ -176,8 +178,13 @@ button, input[type="button"], input[type="submit"], .btn {
   font-size: 1.5rem;
   box-sizing: border-box;
   display: block;
+  cursor: pointer;
 }
-
+button:disabled {
+  background: lightgrey;
+  border-color: lightgrey;
+  cursor: default;
+}
 a.btn {
   display: inline-block;
   text-decoration: none;

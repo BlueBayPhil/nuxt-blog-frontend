@@ -10,6 +10,15 @@ export const state = () => ({
 });
 
 export const mutations = {
+  set(state, obj) {
+    state.title = obj.title;
+    state.description = obj.description;
+    state.content = obj.content;
+    state.author = obj.author;
+    state.created_at = obj.created_at;
+    state.updated_at = obj.updated_at;
+    state.published_at = obj.published_at;
+  },
   title(state, text) {
     state.title = text;
   },
