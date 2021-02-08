@@ -7,12 +7,16 @@
       <li class="nav-link">
         <NuxtLink to="/about">About</NuxtLink>
       </li>
-      <li class="nav-link push-right" v-if="$auth.loggedIn && $route.name === 'create'">
+      <li class="nav-link push-right"
+          v-if="$auth.loggedIn && ($route.name === 'create' || $route.name === 'posts-edit-slug')">
         <button type="button" id="btnSubmitPost" class="btn btn-primary"
                 v-on:click="() => {$store.commit('post/posting')}"
                 :disabled="$store.state.post.posting">
           Save
         </button>
+      </li>
+      <li class="nav-link push-right" v-if="$auth.loggedIn && $route.name === 'posts-slug'">
+        <NuxtLink class="btn btn-primary" :to="`/posts/edit/${$route.params.slug}`">Edit</NuxtLink>
       </li>
       <li class="nav-link push-right" v-if="!$auth.loggedIn">
         <NuxtLink to="/login">Sign In</NuxtLink>
@@ -27,6 +31,9 @@
 
 export default {
   name: 'NavBar',
+  mounted() {
+    console.log(this.$route);
+  }
 }
 </script>
 <style>

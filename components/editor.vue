@@ -7,7 +7,7 @@
     <div class="form-group">
       <label for="contentField">Content</label>
       <textarea id="contentField" class="form-control" v-model="postContent" style="height: 65vh"
-                placeholder="Free your mind..."></textarea>
+                placeholder="Free your mind..." wrap="hard"></textarea>
     </div>
   </div>
 </template>
