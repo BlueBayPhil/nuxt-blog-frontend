@@ -3,7 +3,6 @@
     <div class="blog-post">
       <h2>{{ post.title }}</h2>
       <h3>Posted By: {{ post.author }}</h3>
-
       {{ post.content }}
     </div>
     <h3>Comments</h3>
@@ -25,6 +24,9 @@
 
     <div class="comments-container">
       <div class="loading" v-if="loading">Loading Comments...</div>
+      <div v-else-if="comments.length < 1" class="no-comments">
+        <p>No comments to display.</p>
+      </div>
       <Comment v-for="comment in comments" :key="comment.id" :comment="comment"/>
     </div>
   </div>
@@ -134,8 +136,15 @@ export default {
   font-size: 2rem;
   text-align: center;
 }
-
+.blog-post {
+  white-space: pre-wrap;
+}
 h3 {
   margin: 3rem 0;
+}
+.no-comments {
+  text-align: center;
+  color: darkgrey;
+  font-size: 2rem;
 }
 </style>

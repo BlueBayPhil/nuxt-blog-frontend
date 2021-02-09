@@ -1,10 +1,10 @@
 <template>
   <div id="page" class="grid no-row-gap">
-    <NavBar/>
+    <NavBar />
     <div class="masthead">
 
     </div>
-    <div class="content-container">
+    <div class="content-container full-w">
       <Nuxt/>
     </div>
     <div class="page-footer">
