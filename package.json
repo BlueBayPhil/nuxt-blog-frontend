@@ -16,10 +16,14 @@
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/fontawesome": "^1.1.2",
     "core-js": "^3.8.3",
+    "fibers": "^5.0.0",
     "nuxt": "^2.14.12",
+    "sass": "^1.32.6",
     "v-calendar": "^2.2.3"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.14.12"
+    "@nuxt/types": "^2.14.12",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.0"
   }
 }

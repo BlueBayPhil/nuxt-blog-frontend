@@ -1,11 +1,16 @@
 <template>
-  <nav>
-    <ul id="navbar">
-      <li class="nav-link">
+  <div class="navbar">
+    <div class="nav">
+      <div class="nav-item">
         <NuxtLink to="/">Home</NuxtLink>
-      </li>
-      <li class="nav-link">
+      </div>
+      <div class="nav-item">
         <NuxtLink to="/about">About</NuxtLink>
+ Restyling
+      </div>
+    </div>
+  </div>
+
       </li>
  Edit_Comments
       <li class="nav-link push-right" v-if="$auth.loggedIn && $route.name !== 'create'">
@@ -36,10 +41,13 @@
       </li>
     </ul>
   </nav>
+ main
 </template>
-<script>
 
+<script>
 export default {
+ Restyling
+
   name: 'NavBar',
   mounted() {
     console.log(this.$route);
@@ -57,22 +65,11 @@ export default {
   padding: 0;
   margin-bottom: 3rem;
 }
+ main
 
-#navbar .nav-link {
-  /**/
 }
+</script>
 
-.nav-link a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 0 3rem;
-  text-align: center;
-}
+<style scoped>
 
-.push-right {
-  margin-left: auto;
-}
 </style>

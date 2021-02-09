@@ -1,0 +1,6 @@
+:root {
+  --color_primary: dodgerblue;
+  --color_danger: #cd1313;
+  --color_background: #edf3f3;
+  --max_page_width: 1080px;
+}
