@@ -14,7 +14,7 @@
     </article>
 
     <div class="load-more" :class="{clickable: currentPage !== lastPage}" v-on:click="fetchPosts">
-      <p v-if="currentPage !== lastPage">Click to load more</p>
+      <p v-if="currentPage !== lastPage" class="link">Click to load more</p>
       <p v-else-if="loading">Fetching...</p>
       <p v-else>No more posts available.</p>
     </div>
