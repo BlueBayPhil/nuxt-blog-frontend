@@ -23,6 +23,8 @@
         </div>
       </div>
     </div>
+
+    <AdminMenu/>
   </div>
 </template>
 
