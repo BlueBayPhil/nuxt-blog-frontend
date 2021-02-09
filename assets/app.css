@@ -173,3 +173,46 @@ a:hover {
   font-weight: bold;
   font-size: 1.8rem;
 }
+
+input, .form-control {
+  display: block;
+  width: 100%;
+  border: solid 1px lightgrey;
+  padding: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.form-group {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button, input[type="button"], input[type="submit"], .btn {
+  padding: 1rem;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+  display: block;
+  cursor: pointer;
+}
+button:disabled {
+  background: lightgrey;
+  border-color: lightgrey;
+  cursor: default;
+}
+a.btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: dodgerblue;
+  border-color: blue;
+  color: white;
+}

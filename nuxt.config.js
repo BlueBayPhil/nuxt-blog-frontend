@@ -40,7 +40,6 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     '@nuxtjs/fontawesome',
-    '@nuxtjs/pwa',
   ],
 
   loading: {
@@ -104,10 +103,5 @@ export default {
       },
       localStorage: true
     },
-  },
-
-  // PWA configuration
-  pwa: {
-    icon: false // Disable the icon module as this is a website.
   },
 }
