@@ -89,7 +89,7 @@ a:hover {
   transition: background-color 0.2s linear;
 }
 
-.navbar .nav .nav-item > a:hover, .navbar .nav .nav-item a.selected {
+.navbar .nav .nav-item > a:hover, .navbar .nav .nav-item a.selected, .nuxt-link-exact-active {
   color: var(--color_primary);
   text-decoration: none;
   background-color: #eee;
