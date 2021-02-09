@@ -3,7 +3,6 @@
     <div class="blog-post">
       <h2>{{ post.title }}</h2>
       <h3>Posted By: {{ post.author }}</h3>
-
       {{ post.content }}
     </div>
     <h3>Comments</h3>
@@ -19,12 +18,15 @@
         <textarea class="form-control" v-model="comment" wrap="soft" rows="1"
                   placeholder="Share your thoughts..." v-on:click="expandCommentTextArea($event)"
                   v-on:blur="collapseCommentTextArea($event)" :disabled="postingComment"></textarea>
-        <button type="submit" class="btn btn-primary" :disabled="postingComment">Submit</button>
+        <button type="submit" class="btn btn-primary" :disabled="!canSubmitComment">Submit</button>
       </form>
     </div>
 
     <div class="comments-container">
       <div class="loading" v-if="loading">Loading Comments...</div>
+      <div v-else-if="comments.length < 1" class="no-comments">
+        <p>No comments to display.</p>
+      </div>
       <Comment v-for="comment in comments" :key="comment.id" :comment="comment"/>
     </div>
   </div>
@@ -42,6 +44,11 @@ export default {
       commentPage: 1,
       commentPageCount: 1
     };
+  },
+  computed: {
+    canSubmitComment() {
+      return this.comment.length >= 10 && !this.postingComment;
+    }
   },
   async asyncData({params, $axios}) {
     const post = await $axios.$get(`/api/posts/${params.slug}`);
@@ -67,10 +74,18 @@ export default {
       });
     },
     submitComment() {
-      if (!this.$auth.loggedIn) {
+      if (!this.$auth.loggedIn || this.postingComment) {
         // How did we get here?!
         return;
       }
+
+      // Validate.
+      if (this.comment.length < 10) {
+        // Must be longer than 10 characters
+        this.postingComment = false;
+        return;
+      }
+
       this.postingComment = true;
 
       this.$axios.post(`/api/posts/${this.post.id}/comments`, {
@@ -84,6 +99,7 @@ export default {
         });
         // Clear comment textarea.
         this.comment = '';
+      }).finally(() => {
         this.postingComment = false;
       });
     },
@@ -134,8 +150,15 @@ export default {
   font-size: 2rem;
   text-align: center;
 }
-
+.blog-post {
+  white-space: pre-wrap;
+}
 h3 {
   margin: 3rem 0;
+}
+.no-comments {
+  text-align: center;
+  color: darkgrey;
+  font-size: 2rem;
 }
 </style>

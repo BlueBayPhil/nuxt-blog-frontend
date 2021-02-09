@@ -1,57 +1,34 @@
 <template>
-  <div id="page">
-    <header id="banner">
-      <h1>My blog</h1>
-      <h2>A simple blog example using Nuxt.js and Laravel 8</h2>
-    </header>
+  <div id="page" class="grid no-row-gap">
     <NavBar/>
-    <div class="grid">
-      <main class="col-9">
-        <Nuxt/>
-      </main>
-      <SideBar/>
+    <div class="masthead">
+
     </div>
+    <div class="content-container">
+      <Nuxt/>
+    </div>
+    <div class="page-footer">
+      <div class="container grid grid-cols-3">
+        <div class="footer-logo-space">
+          <a href="https://www.bluebaytravel.co.uk" title="Blue Bay Travel">
+            <img src="~/assets/img/bbt.webp" alt="Blue Bay Travel Logo" class="logo">
+          </a>
+          <address>
+            Blue Bay Travel Ltd.<br>
+            Some Street<br>
+            Some Town<br>
+            Some City<br>
+            NO1 PST
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <AdminMenu/>
   </div>
 </template>
 
 <style>
-html {
-  font-family: 'Source Sans Pro',
-  -apple-system,
-  BlinkMacSystemFont,
-  'Segoe UI',
-  Roboto,
-  'Helvetica Neue',
-  Arial,
-  sans-serif;
-  font-size: 10px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body {
-  font-size: 1.6rem;
-}
-
-#page {
-  margin: 0 auto;
-  width: auto;
-  max-width: 1440px;
-}
-
-h1 {
-  font-size: 3rem;
-}
 
 h2 {
   font-size: 2.8rem;
@@ -176,8 +153,13 @@ button, input[type="button"], input[type="submit"], .btn {
   font-size: 1.5rem;
   box-sizing: border-box;
   display: block;
+  cursor: pointer;
 }
-
+button:disabled {
+  background: lightgrey;
+  border-color: lightgrey;
+  cursor: default;
+}
 a.btn {
   display: inline-block;
   text-decoration: none;
@@ -256,9 +238,8 @@ a.btn {
 }
 </style>
 <script>
-import NavBar from "@/components/NavBar";
 
 export default {
-  components: {NavBar}
+  //
 }
 </script>
