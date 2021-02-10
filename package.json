@@ -15,6 +15,7 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/fontawesome": "^1.1.2",
+    "@vue/cli-plugin-unit-jest": "^4.5.11",
     "core-js": "^3.8.3",
     "fibers": "^5.0.0",
     "nuxt": "^2.14.12",
