@@ -3,7 +3,7 @@
     <div v-if="!editing">
       <h4>
         {{ comment.author }} <a title="Edit Comment" class="edit-link" v-on:click="editComment()">
-        <fa icon="edit"></fa>
+        <font-awesome-icon icon="edit"></font-awesome-icon>
       </a>
         <span>{{ (new Date(comment.created_at)).toLocaleString() }}</span>
       </h4>
@@ -12,7 +12,7 @@
     <div v-else>
       <h4>
         {{ comment.author }} <a title="Cancel" class="edit-link cancel" v-on:click="cancelEditing()">
-        <fa icon="window-close"></fa>
+        <font-awesome-icon icon="window-close"></font-awesome-icon>
       </a>
       </h4>
       <div class="comment-scribe">
