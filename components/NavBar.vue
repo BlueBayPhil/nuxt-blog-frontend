@@ -7,6 +7,10 @@
       <div class="nav-item">
         <NuxtLink to="/about">About</NuxtLink>
       </div>
+      <div class="nav-item float-right">
+        <NuxtLink to="/logout" v-if="$auth.loggedIn">Logout</NuxtLink>
+        <NuxtLink to="/login" v-else>Login</NuxtLink>
+      </div>
     </div>
   </div>
 </template>
