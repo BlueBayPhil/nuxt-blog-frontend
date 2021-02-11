@@ -50,10 +50,12 @@ export default {
   // FontAwesome module configuration
   fontawesome: {
     icons: {
-      component: 'fa',
       solid: [
         'faEdit',
         'faWindowClose'
+      ],
+      brand: [
+        'github',
       ]
     }
   },
