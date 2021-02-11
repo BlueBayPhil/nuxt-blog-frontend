@@ -5,8 +5,7 @@ export const state = () => ({
   author: '',
   created_at: null,
   updated_at: null,
-  published_at: null,
-  posting: false
+  published_at: null
 });
 
 export const mutations = {
@@ -39,9 +38,6 @@ export const mutations = {
   },
   published_at(state, text) {
     state.published_at = text;
-  },
-  posting(state) {
-    state.posting = !state.posting;
   },
   blank(state) {
     state.title = '';
