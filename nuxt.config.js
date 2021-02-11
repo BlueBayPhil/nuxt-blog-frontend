@@ -99,8 +99,6 @@ export default {
             method: 'get',
             propertyName: false
           },
-          tokenRequired: false,
-          tokenType: false
         }
       },
       localStorage: true
