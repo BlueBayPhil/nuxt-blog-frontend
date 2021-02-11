@@ -94,6 +94,10 @@ a:hover {
   text-decoration: none;
   background-color: #eee;
 }
+.navbar .nav .nav-item.float-right {
+  margin-left: auto;
+  border-left: solid 1px #eee;
+}
 
 .masthead {
   grid-column: col-start / span 12;
