@@ -2,7 +2,7 @@
   <div class="comment">
     <div v-if="!editing">
       <h4>
-        {{ comment.author }} <a title="Edit Comment" class="edit-link" v-on:click="editComment()">
+        {{ comment.author.name }} <a v-if="canEdit" title="Edit Comment" class="edit-link" v-on:click="editComment()">
         <font-awesome-icon icon="edit"></font-awesome-icon>
       </a>
         <span>{{ (new Date(comment.created_at)).toLocaleString() }}</span>
@@ -11,11 +11,11 @@
     </div>
     <div v-else>
       <h4>
-        {{ comment.author }} <a title="Cancel" class="edit-link cancel" v-on:click="cancelEditing()">
+        {{ comment.author.name }} <a title="Cancel" class="edit-link cancel" v-on:click="cancelEditing()">
         <font-awesome-icon icon="window-close"></font-awesome-icon>
       </a>
       </h4>
-      <div class="comment-scribe">
+      <div class="comment-scribe" v-if="canEdit">
         <textarea class="form-control" v-model="editedComment" wrap="soft" rows="1"
                   placeholder="Share your thoughts..." :disabled="savingComment"></textarea>
         <button type="button" v-on:click="saveComment()" class="btn btn-primary" :disabled="savingComment">Submit</button>
@@ -39,8 +39,7 @@ export default {
   },
   computed: {
     canEdit() {
-      // TODO
-      return this.$auth.LoggedIn && this.$auth.user.id === this.comment.author_id;
+      return this.$auth.loggedIn && this.$auth.user.id === this.comment.author.id;
     }
   },
   mounted() {
