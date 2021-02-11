@@ -11,7 +11,12 @@
         <input type="password" id="passwordInput" v-model="form.password">
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary" :disabled="isAuthenticating">Login
+        <button type="submit" class="btn btn-primary" :disabled="isAuthenticating">
+          Login
+        </button>
+        <button type="button" v-on:click="githubLogin" class="btn btn-github">
+          <font-awesome-icon icon="github"></font-awesome-icon>
+          Login With GitHub
         </button>
       </div>
     </form>
@@ -34,6 +39,9 @@ export default {
     this.$axios.get('/sanctum/csrf-cookie');
   },
   methods: {
+    githubLogin() {
+      window.location = "http://localhost:8000/api/login/github";
+    },
     handleLogin() {
       this.isAuthenticating = true;
 
