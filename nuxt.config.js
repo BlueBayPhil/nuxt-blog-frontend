@@ -92,7 +92,7 @@ export default {
           login: {
             url: '/api/login',
             method: 'post',
-            propertyName: false
+            propertyName: 'token'
           },
           user: {
             url: '/api/user',
