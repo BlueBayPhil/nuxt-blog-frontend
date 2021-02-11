@@ -92,15 +92,13 @@ export default {
           login: {
             url: '/api/login',
             method: 'post',
-            propertyName: false
+            propertyName: 'token'
           },
           user: {
             url: '/api/user',
             method: 'get',
             propertyName: false
           },
-          tokenRequired: false,
-          tokenType: false
         }
       },
       localStorage: true
