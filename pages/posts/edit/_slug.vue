@@ -1,22 +1,12 @@
 <template>
-  <div>
-    <Editor :editing="true" />
+  <div class="page">
+    <Editor v-on:submit="savePost" />
   </div>
 </template>
 
 <script>
 export default {
   middleware: 'auth',
-  computed: {
-    posting() {
-      return this.$store.state.post.posting;
-    }
-  },
-  watch: {
-    posting() {
-      this.savePost();
-    }
-  },
   async asyncData(ctx) {
     const post = await ctx.$axios.$get(`/api/posts/${ctx.params.slug}`);
 
@@ -26,7 +16,6 @@ export default {
     savePost() {
       this.$axios.put(`/api/posts/${this.$route.params.slug}`, this.$store.state.post).then(() => {
         // Redirect to the newly created post.
-        this.$store.commit('post/posting');
         this.$store.commit('post/blank');
         this.$router.push(`/posts/${this.$route.params.slug}`);
       });

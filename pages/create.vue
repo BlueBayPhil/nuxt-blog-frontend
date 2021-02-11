@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Editor />
+    <Editor v-on:submit="savePost" />
   </div>
 </template>
 
