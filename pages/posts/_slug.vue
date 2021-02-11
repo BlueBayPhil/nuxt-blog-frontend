@@ -1,7 +1,14 @@
 <template>
   <div class="page">
     <div class="blog-post">
-      <h2>{{ post.title }}</h2>
+      <h2>
+        <div class="left">
+          {{ post.title }}
+        </div>
+        <div class="right">
+          <NuxtLink :to="'/posts/edit/' + $route.params.slug" v-if="$auth.loggedIn" class="btn btn-primary">Edit</NuxtLink>
+        </div>
+      </h2>
       <h3>Posted By: {{ post.author }}</h3>
       {{ post.content }}
     </div>
@@ -150,15 +157,27 @@ export default {
   font-size: 2rem;
   text-align: center;
 }
+
 .blog-post {
   white-space: pre-wrap;
 }
+
 h3 {
   margin: 3rem 0;
 }
+
 .no-comments {
   text-align: center;
   color: darkgrey;
   font-size: 2rem;
+}
+h2 {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.right {
+  display: flex;
+  align-items: center;
 }
 </style>
