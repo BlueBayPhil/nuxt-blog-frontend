@@ -20,6 +20,10 @@
         <textarea id="descriptionField" class="form-control" rows="2" wrap="off"
                   placeholder="Describe your thoughts..."></textarea>
       </div>
+      <div class="form-group">
+        <label for="imageField">Image</label>
+        <input type="file" id="imageField" accept="image/*" v-on:change="handleFileSelection">
+      </div>
     </div>
   </div>
 </template>
@@ -56,11 +60,22 @@ export default {
       set(value) {
         this.$store.commit('post/description', value);
       }
+    },
+    image: {
+      get() {
+        return this.$store.state.post.image;
+      },
+      set(value) {
+        this.$store.commit('post/image', value);
+      }
     }
   },
   methods: {
     submit() {
       this.$emit('submit');
+    },
+    handleFileSelection(event) {
+      this.image = event.target.files[0];
     }
   }
 }

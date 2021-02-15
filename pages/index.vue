@@ -2,7 +2,7 @@
   <div class="container articles-container">
     <article class="blog-post" v-for="post in posts" :key="post.id" v-on:click="navigateToArticle(post.slug)">
       <div class="blog-image">
-        <img src="https://source.unsplash.com/200x200?caribbean" alt="A photo of the caribbean"/>
+        <img :src="post.image" :alt="post.title"/>
       </div>
       <div class="blog-info">
         <h4 class="blog-title">{{ post.title }}</h4>

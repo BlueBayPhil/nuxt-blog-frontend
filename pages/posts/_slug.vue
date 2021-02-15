@@ -10,6 +10,7 @@
         </div>
       </h2>
       <h3>Posted By: {{ post.author }}</h3>
+      <img :src="post.image" v-if="post.image != null" class="article-image" />
       {{ post.content }}
     </div>
     <h3>Comments</h3>
@@ -179,5 +180,14 @@ h2 {
 .right {
   display: flex;
   align-items: center;
+}
+.article-image {
+  display: block;
+  border: solid 1px grey;
+  border-radius: 3px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding: 1.5rem;
 }
 </style>
