@@ -57,8 +57,10 @@ export default {
       return this.comment.length >= 10 && !this.postingComment;
     }
   },
-  async asyncData({params, $axios}) {
+  async asyncData({params, $axios, store}) {
     const post = await $axios.$get(`/api/posts/${params.slug}`);
+
+    store.commit("setMastHeadImage", post.image);
 
     return {
       post

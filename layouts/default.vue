@@ -1,7 +1,7 @@
 <template>
   <div id="page" class="grid no-row-gap">
     <NavBar/>
-    <div class="masthead">
+    <div class="masthead" v-bind:style="{backgroundImage: 'url('+mastheadImage+')'}">
 
     </div>
     <div class="content-container">
@@ -28,7 +28,15 @@
   </div>
 </template>
 <script type="text/javascript">
-
+export default {
+  computed: {
+    mastheadImage: {
+      get() {
+        return "'" + this.$store.state.mastheadImage + "'";
+      }
+    },
+  },
+}
 </script>
 <style>
 

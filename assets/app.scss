@@ -103,9 +103,9 @@ a:hover {
 .masthead {
   grid-column: col-start / span 12;
   grid-row: 2;
-  background-image: url("https://source.unsplash.com/1600x300?beach,holiday");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   height: 30rem;
   margin-bottom: 5rem;
 }
