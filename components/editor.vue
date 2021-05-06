@@ -20,6 +20,9 @@
         <textarea id="descriptionField" class="form-control" rows="2" wrap="off"
                   placeholder="Describe your thoughts..."></textarea>
       </div>
+      <div class="form-group">
+        <ImageUploader name="image" />
+      </div>
     </div>
   </div>
 </template>

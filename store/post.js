@@ -5,7 +5,8 @@ export const state = () => ({
   author: '',
   created_at: null,
   updated_at: null,
-  published_at: null
+  published_at: null,
+  image: '',
 });
 
 export const mutations = {
@@ -17,6 +18,7 @@ export const mutations = {
     state.created_at = obj.created_at;
     state.updated_at = obj.updated_at;
     state.published_at = obj.published_at;
+    state.image = obj.image;
   },
   title(state, text) {
     state.title = text;
@@ -39,6 +41,9 @@ export const mutations = {
   published_at(state, text) {
     state.published_at = text;
   },
+  image(state, text) {
+    state.image = text;
+  },
   blank(state) {
     state.title = '';
     state.description = '';
@@ -48,5 +53,6 @@ export const mutations = {
     state.updated_at = '';
     state.published_at = '';
     state.posting = false;
+    state.image = '';
   }
 }

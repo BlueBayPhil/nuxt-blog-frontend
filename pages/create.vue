@@ -19,10 +19,21 @@ export default {
   },
   methods: {
     savePost() {
-      this.$axios.post('/api/posts', this.$store.state.post).then(() => {
+      let formData = new FormData();
+      for(const prop in this.$store.state.post) {
+        formData.set(prop, this.$store.state.post[prop]);
+      }
+
+      this.$axios.post(
+        '/api/posts',
+        formData, {
+          headers: {
+            'Content-Type': "multipart/form-data",
+          }
+        }
+      ).then(() => {
         // Redirect to the newly created post.
         this.$store.commit('post/posting');
-        console.log("Created!");
         this.$store.commit('post/blank');
         this.$router.push('/');
       });
