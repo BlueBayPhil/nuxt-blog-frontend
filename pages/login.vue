@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <div class="alert alert-danger" v-if="error">
+      <p>{{ errorMessage }}</p>
+    </div>
     <form @submit.prevent="handleLogin()">
       <h4>Please enter your Email address and Password to sign in</h4>
       <div class="form-group">
@@ -31,7 +34,9 @@ export default {
         email: '',
         password: '',
       },
-      isAuthenticating: false
+      isAuthenticating: false,
+      error: false,
+      errorMessage: "",
     };
   },
   mounted() {
@@ -42,17 +47,22 @@ export default {
     githubLogin() {
       window.location = "http://localhost:8000/api/login/github";
     },
-    handleLogin() {
+    async handleLogin() {
       this.isAuthenticating = true;
 
-      this.$auth.loginWith('local', {
-        data: {
-          email: this.form.email,
-          password: this.form.password
-        }
-      }).then(function () {
-        this.isAuthenticating = false;
-      });
+      try {
+        await this.$auth.loginWith('local', {
+          data: {
+            email: this.form.email,
+            password: this.form.password
+          }
+        });
+      } catch(e) {
+        this.error = true;
+        this.errorMessage= e.response.data.error;
+      }
+
+      this.isAuthenticating = false;
     }
   }
 }

@@ -1,6 +1,7 @@
-@import "~/assets/_variables.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+@use "variables" as *;
+@use "sass:color";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap');
 
 html {
   font-family: Roboto,
@@ -27,7 +28,7 @@ html {
 }
 
 body {
-  background-color: var(--color_background);
+  background-color: $color_background;
   font-size: 1.6rem;
   color: black;
 }
@@ -66,7 +67,7 @@ a:hover {
   margin: 0 auto;
   width: auto;
   height: 100%;
-  max-width: var(--max_page_width);
+  max-width: $max_page_width;
   flex-direction: row;
   align-items: stretch;
 }
@@ -90,7 +91,7 @@ a:hover {
 }
 
 .navbar .nav .nav-item > a:hover, .navbar .nav .nav-item a.selected, .nuxt-link-exact-active {
-  color: var(--color_primary);
+  color: $color_primary;
   text-decoration: none;
   background-color: #eee;
 }
@@ -121,12 +122,12 @@ a:hover {
 .page {
   margin: 0 auto;
   width: 100%;
-  max-width: var(--max_page_width);
+  max-width: $max_page_width;
 }
 
 .container {
   width: 100%;
-  max-width: var(--max_page_width);
+  max-width: $max_page_width;
   margin: 0 auto;
 }
 
@@ -153,7 +154,7 @@ a:hover {
 
 .page-footer > .container {
   width: auto;
-  max-width: var(--max_page_width);
+  max-width: $max_page_width;
   margin: 0 auto;
   display: grid;
   grid-template-columns: [left] 1fr [middle] 1fr [right] 1fr;
@@ -223,4 +224,15 @@ a.btn {
 .btn-github {
   background-color: black;
   color: white;
+}
+.alert {
+  display: block;
+  border: solid 1px;
+  border-radius: 3px;
+  padding: 1rem;
+}
+.alert-danger {
+  border-color: $color_danger;
+  background-color: color.scale($color_danger, $lightness: 70%);
+  margin: 2rem 0;
 }

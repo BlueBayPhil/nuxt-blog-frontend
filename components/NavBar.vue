@@ -9,7 +9,10 @@
       </div>
       <div class="nav-item float-right">
         <NuxtLink to="/logout" v-if="$auth.loggedIn">Logout</NuxtLink>
-        <NuxtLink to="/login" v-else>Login</NuxtLink>
+        <div v-else>
+          <NuxtLink to="/login">Login</NuxtLink>
+          <NuxtLink to="/register">Register</NuxtLink>
+        </div>
       </div>
     </div>
   </div>
